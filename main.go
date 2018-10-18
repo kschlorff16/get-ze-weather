@@ -3,12 +3,13 @@ package main
 import (
 	"bufio"
 	"fmt"
-	"get-ze-weather/models"
 	"io/ioutil"
 	"net/http"
 	"os"
 	"strings"
 	"unicode"
+
+	"github.com/kschlorff16/get-ze-weather/models"
 )
 
 const baseURL = "http://api.openweathermap.org/data/2.5/weather?q="

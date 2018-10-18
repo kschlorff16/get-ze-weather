@@ -2,8 +2,8 @@ package main
 
 import (
 	"bufio"
-	"dwolla/models"
 	"fmt"
+	"get-ze-weather/models"
 	"io/ioutil"
 	"net/http"
 	"os"

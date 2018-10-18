@@ -91,7 +91,6 @@ func responseIsEmpty(response string) bool {
 func buildFullURL(location string) string {
 	apiKey := os.Getenv("OPENWEATHERMAPAPIKEY")
 	apiStrings := []string{baseURL, location, imperialUnits, appIDSuffix, apiKey}
-	fmt.Println(strings.Join(apiStrings[:], ""))
 	return strings.Join(apiStrings[:], "")
 }
 
@@ -100,7 +99,5 @@ func splitStringOnComma(stringThatContainsCommas string) string {
 }
 
 func splitStringOnSpace(stringThatContainsSpaces string) string {
-	fmt.Println("This is what I got: " + stringThatContainsSpaces)
-	fmt.Printf("This is what I gave back: %v", strings.Split(stringThatContainsSpaces, " ")[0])
 	return strings.Split(stringThatContainsSpaces, " ")[0]
 }

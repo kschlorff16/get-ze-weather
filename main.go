@@ -102,3 +102,24 @@ func splitStringOnComma(stringThatContainsCommas string) string {
 func splitStringOnSpace(stringThatContainsSpaces string) string {
 	return strings.Split(stringThatContainsSpaces, " ")[0]
 }
+
+func processCitiesWithSpacesInTheNames(inputThatContainsSpaces string) string {
+	listOfCityPrefixes := []string{"Des", "Grand", "North", "South", "East", "West", "New", "San", "Saint", "Las", "Los", "Fort"}
+	numberOfSpacesInTheString := strings.Count(inputThatContainsSpaces, " ")
+
+	city := inputThatContainsSpaces
+	for numberOfSpacesInTheString > 1 {
+		lastSpace := strings.LastIndex(city, " ")
+		city = city[0:lastSpace]
+		numberOfSpacesInTheString = strings.Count(city, " ")
+	}
+
+	if numberOfSpacesInTheString == 1 {
+		for _, prefix := range listOfCityPrefixes {
+			if prefix == city[0:strings.LastIndex(city, " ")] {
+				return city
+			}
+		}
+	}
+	return splitStringOnSpace(city)
+}

@@ -71,3 +71,14 @@ func TestCleanUserResponse(t *testing.T) {
 		}
 	}
 }
+
+func TestProcessCitiesWithSpacesInTheNames(t *testing.T) {
+	inputs := []string{"Des Moines", "Des Moines, IA", "San Juan", "Des Moines,    Ia", "Des Moines Ia US World"}
+
+	for _, input := range inputs {
+		result := processCitiesWithSpacesInTheNames(input)
+		if strings.Count(result, " ") > 1 {
+			t.Errorf("There are more than one spaces in the result. The input that produced this failing test was: %v", input)
+		}
+	}
+}

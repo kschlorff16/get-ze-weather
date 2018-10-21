@@ -82,3 +82,14 @@ func TestProcessCitiesWithSpacesInTheNames(t *testing.T) {
 		}
 	}
 }
+
+func TestCityHasPrefix(t *testing.T) {
+	inputs := []string{"San Jose", "Des Moines", "San Juan", "Santa Monica", "Cedar Rapids", "Council Bluffs"}
+
+	for _, input := range inputs {
+		cityHasPrefix := cityHasPrefix(input)
+		if !cityHasPrefix {
+			t.Errorf("There is a prefix in the city name. The input that produced this failing tests was: %v", input)
+		}
+	}
+}

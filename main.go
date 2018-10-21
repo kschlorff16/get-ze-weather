@@ -104,7 +104,6 @@ func splitStringOnSpace(stringThatContainsSpaces string) string {
 }
 
 func processCitiesWithSpacesInTheNames(inputThatContainsSpaces string) string {
-	listOfCityPrefixes := []string{"Des", "Grand", "North", "South", "East", "West", "New", "San", "Saint", "Las", "Los", "Fort"}
 	numberOfSpacesInTheString := strings.Count(inputThatContainsSpaces, " ")
 
 	city := inputThatContainsSpaces
@@ -115,11 +114,19 @@ func processCitiesWithSpacesInTheNames(inputThatContainsSpaces string) string {
 	}
 
 	if numberOfSpacesInTheString == 1 {
-		for _, prefix := range listOfCityPrefixes {
-			if prefix == city[0:strings.LastIndex(city, " ")] {
-				return city
-			}
+		if cityHasPrefix(city) {
+			return city
 		}
 	}
 	return splitStringOnSpace(city)
+}
+
+func cityHasPrefix(city string) bool {
+	listOfCityPrefixes := []string{"Des", "Grand", "Cedar", "Council", "North", "South", "East", "West", "New", "San", "Saint", "Santa", "Las", "Los", "Fort"}
+	for _, prefix := range listOfCityPrefixes {
+		if prefix == city[0:strings.LastIndex(city, " ")] {
+			return true
+		}
+	}
+	return false
 }

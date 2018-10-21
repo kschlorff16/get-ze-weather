@@ -75,7 +75,7 @@ func userInputContainsOnlyLettersAndSpaces(userInputCity string) bool {
 	cleanedInput := userInputCity
 
 	for _, character := range cleanedInput {
-		if !unicode.IsLetter(character) {
+		if !unicode.IsLetter(character) && !unicode.IsSpace(character) {
 			return false
 		}
 	}

@@ -62,7 +62,7 @@ func TestSplitStringOnSpace(t *testing.T) {
 }
 
 func TestCleanUserResponse(t *testing.T) {
-	userResponses := []string{"london", "Chicago", "Charleston"}
+	userResponses := []string{"london,uk", "Chicago", "Charleston", "ames, iowa"}
 
 	for _, response := range userResponses {
 		cleanedResponse := cleanUserResponse(response)

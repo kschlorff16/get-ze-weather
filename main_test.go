@@ -17,7 +17,7 @@ func TestResponseIsEmpty(t *testing.T) {
 	}
 }
 
-func TestResponseIsOkWithValidInputs(t *testing.T) {
+func TestResponseContainsOnlyLettersAndSpacesWithValidInputs(t *testing.T) {
 	validResponses := []string{"london", "Chicago", "Des Moines", "Santa Monica"}
 
 	for _, validInput := range validResponses {
@@ -27,7 +27,7 @@ func TestResponseIsOkWithValidInputs(t *testing.T) {
 	}
 }
 
-func TestResponseIsOkWithInvalidInputs(t *testing.T) {
+func TestUserInputContainsOnlyLettersAndSpacesWithInvalidInputs(t *testing.T) {
 	invalidResponses := []string{"1l0v3c4ts"}
 
 	for _, validInput := range invalidResponses {
@@ -61,7 +61,7 @@ func TestSplitStringOnSpace(t *testing.T) {
 	}
 }
 
-func TestCleanUserResponse(t *testing.T) {
+func TestRemoveCommasAndSpaces(t *testing.T) {
 	userResponses := []string{"london,uk", "Chicago", "Charleston", "ames, iowa"}
 
 	for _, response := range userResponses {

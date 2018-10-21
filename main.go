@@ -59,11 +59,12 @@ func promptUserForInput() string {
 
 func cleanUserResponse(stringThatMayContainCommasOrSpaces string) string {
 	cleanedInput := stringThatMayContainCommasOrSpaces
-	if strings.Contains(stringThatMayContainCommasOrSpaces, ",") {
+
+	if strings.Contains(cleanedInput, ",") {
 		cleanedInput = splitStringOnComma(stringThatMayContainCommasOrSpaces)
 	}
 
-	if strings.Contains(stringThatMayContainCommasOrSpaces, " ") {
+	if strings.Contains(cleanedInput, " ") {
 		cleanedInput = splitStringOnSpace(stringThatMayContainCommasOrSpaces)
 	}
 

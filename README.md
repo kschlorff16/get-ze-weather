@@ -5,7 +5,7 @@ Hi folx! My name's Kent, and I like computers. This repo is a pretty simple litt
 
 ## Installation
 - Download and install the go binary for your operating system from [here](https://golang.org/dl/)
-- Clone the repo into `$GOPATH/src` (`echo $GOPATH` after installing the binary
+- Clone the repo into `$GOPATH/src` (`echo $GOPATH` after installing the binary)
 - From the project root: `go get ./...`
 - From the project root: `go build` 
 - `export OPENWEATHERMAPAPIKEY=<api-key>`. You can get an api key from the openweathermap website for free.

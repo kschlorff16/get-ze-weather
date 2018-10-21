@@ -18,10 +18,10 @@ func TestResponseIsEmpty(t *testing.T) {
 }
 
 func TestResponseIsOkWithValidInputs(t *testing.T) {
-	validResponses := []string{"london", "Chicago", "Charleston"}
+	validResponses := []string{"london", "Chicago", "Des Moines", "Santa Monica"}
 
 	for _, validInput := range validResponses {
-		if !responseIsOk(validInput) {
+		if !userInputContainsOnlyLettersAndSpaces(validInput) {
 			t.Errorf("The input was not valid. The value that was invalid was %v.", validInput)
 		}
 	}
@@ -31,7 +31,7 @@ func TestResponseIsOkWithInvalidInputs(t *testing.T) {
 	invalidResponses := []string{"1l0v3c4ts"}
 
 	for _, validInput := range invalidResponses {
-		if responseIsOk(validInput) {
+		if userInputContainsOnlyLettersAndSpaces(validInput) {
 			t.Errorf("The response was not valid. The value that was invalid was %v.", validInput)
 		}
 	}
@@ -65,7 +65,7 @@ func TestCleanUserResponse(t *testing.T) {
 	userResponses := []string{"london,uk", "Chicago", "Charleston", "ames, iowa"}
 
 	for _, response := range userResponses {
-		cleanedResponse := cleanUserResponse(response)
+		cleanedResponse := removeCommasAndSpaces(response)
 		if strings.Contains(cleanedResponse, ",") || strings.Contains(cleanedResponse, " ") {
 			t.Errorf("The input was not valid. The value that was invalid was %v.", cleanedResponse)
 		}

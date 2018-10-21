@@ -24,8 +24,8 @@ func main() {
 	}
 	fmt.Println(prompt)
 	response := promptUserForInput()
-	cleanedResponse := cleanUserResponse(response)
-	if responseIsOk(cleanedResponse) {
+	cleanedResponse := removeCommasAndSpaces(response)
+	if userInputContainsOnlyLettersAndSpaces(cleanedResponse) {
 		fullURL := buildFullURL(cleanedResponse)
 		responseAsByteArray := convertHTTPResponseToByteArray(fullURL)
 		models.PrintLocationAndTemperatureInfo(responseAsByteArray)
@@ -57,22 +57,22 @@ func promptUserForInput() string {
 	return strings.TrimSpace(text)
 }
 
-func cleanUserResponse(stringThatMayContainCommasOrSpaces string) string {
-	cleanedInput := stringThatMayContainCommasOrSpaces
+func removeCommasAndSpaces(stringThatMayContainCommasOrSpaces string) string {
+	cleanedUserInput := stringThatMayContainCommasOrSpaces
 
-	if strings.Contains(cleanedInput, ",") {
-		cleanedInput = splitStringOnComma(stringThatMayContainCommasOrSpaces)
+	if strings.Contains(cleanedUserInput, ",") {
+		cleanedUserInput = splitStringOnComma(stringThatMayContainCommasOrSpaces)
 	}
 
-	if strings.Contains(cleanedInput, " ") {
-		cleanedInput = splitStringOnSpace(stringThatMayContainCommasOrSpaces)
+	if strings.Contains(cleanedUserInput, " ") {
+		cleanedUserInput = processCitiesWithSpacesInTheNames(cleanedUserInput)
 	}
 
-	return cleanedInput
+	return cleanedUserInput
 }
 
-func responseIsOk(response string) bool {
-	cleanedInput := response
+func userInputContainsOnlyLettersAndSpaces(userInputCity string) bool {
+	cleanedInput := userInputCity
 
 	for _, character := range cleanedInput {
 		if !unicode.IsLetter(character) {
